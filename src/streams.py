@@ -29,6 +29,6 @@ class Streams(Resource):
             conn = mysql.get_db().cursor()
             conn.execute("select * from stream")
         except:
-            return 'something went wrong'
+            return []
 
         return get_dict(conn)
