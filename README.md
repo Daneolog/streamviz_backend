@@ -1,5 +1,12 @@
 # StreamViz I: Backend
 
+## Setting up database
+
+To get the database setup, MySQL Workbench needs to be downloaded and installed ([link here](https://dev.mysql.com/downloads/workbench/)).
+
+1. Create a **schema** named streamviz
+2. Run `clean.py` to create the stream table
+
 ## Setup and running things
 
 To get the server running on a local machine, some dependencies need to be installed
