@@ -1,3 +1,4 @@
+from flask import send_from_directory
 from flask_restplus import Namespace, Resource, fields
 from src import mysql
 
@@ -32,3 +33,11 @@ class Streams(Resource):
             return []
 
         return get_dict(conn)
+
+
+@api.route('/download')
+class Download(Resource):
+
+    @api.expect(parser)
+    def get(self):
+        return send_from_directory('../data', 'UOWN_data_master_04nov2018_clean.csv')
