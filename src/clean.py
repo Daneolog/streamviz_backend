@@ -2,8 +2,6 @@
 import sys
 sys.path
 sys.path.append('..')
-print(sys.path)
-
 
 # %%
 import pandas as pd
