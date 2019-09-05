@@ -29,6 +29,3 @@ conn = create_engine('mysql+pymysql://root:password@localhost/streamviz')
 df.to_sql('stream', conn, index=False, if_exists='replace')
 
 # %%
-
-
-# %%
