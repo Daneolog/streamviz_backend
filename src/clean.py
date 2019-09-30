@@ -16,8 +16,8 @@ df['date'] = pd.to_datetime(df[['year', 'month', 'day']], errors='coerce')
 df['date']
 
 # rename columns
-df.rename(columns={'conductivity.uscm': 'conductivity', 'turbidity.ntu': 'turbidity', 'po4.mgL': 'phosphate',
-                   'no3.mgL': 'nitrate', 'temperature.c': 'temperature', 'e.coli.cfu': 'ecoli', 'ecoli.method.known': 'ecoli_method'}, inplace=True)
+df.rename(columns={'visual_score': 'Visual Score', 'biological_score': 'Biological Score', 'conductivity.uscm': 'Conductivity', 'turbidity.ntu': 'Turbidity', 'po4.mgL': 'Phosphate',
+                   'no3.mgL': 'Nitrate', 'temperature.c': 'Temperature', 'e.coli.cfu': 'E.coli', 'ecoli.method.known': 'E.coli Method'}, inplace=True)
 df
 
 # %%
