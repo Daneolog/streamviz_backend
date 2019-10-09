@@ -9,7 +9,7 @@ import numpy as np
 from sqlalchemy import create_engine
 
 def clean(filename):
-    df = pd.read_csv(f'data/{filename}')
+    df = pd.read_csv(filename)
     df['date'] = pd.to_datetime(df[['year', 'month', 'day']], errors='coerce')
 
     # rename columns

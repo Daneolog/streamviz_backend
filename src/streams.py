@@ -1,6 +1,6 @@
 from flask import send_from_directory, request
 from flask_restplus import Namespace, Resource, fields
-from src import mysql
+from src import db
 from .clean import clean
 
 api = Namespace('streams', description='Stream related operations')
@@ -11,29 +11,21 @@ parser = api.parser()
 # parser.add_argument('email', location='args', default='daneolog@gmail.com')
 
 
-def get_dict(cursor):
-    columns = [col[0] for col in cursor.description]
-    rows = []
-    row = cursor.fetchone()
-    while row is not None:
-        row = [None if i is None else str(i) for i in row]
-        rows.append(dict(zip(columns, row)))
-        row = cursor.fetchone()
-    return rows
-
-
 @api.route('')
 class Streams(Resource):
 
     @api.expect(parser)
     def get(self):
-        try:
-            conn = mysql.get_db().cursor()
-            conn.execute("select * from stream")
-        except:
-            return []
+        conn = db.get_engine()
+        query = conn.execute("select * from stream")
+        rows = []
+        for row in query:
+            row = dict(row)
+            if row['date'] is not None:
+                row['date'] = row['date'].strftime('%m/%d/%Y')
+            rows.append(row)
 
-        return get_dict(conn)
+        return rows
 
 
 @api.route('/download')
@@ -50,6 +42,8 @@ class Upload(Resource):
     @api.expect(parser)
     def post(self):
         csv = request.files['file']
-        csv.save(f'data/{csv.filename}')
+        csv.save(f'new_data/{csv.filename}')
 
+        df = clean(f'new_data/{csv.filename}')
+        df.to_sql('stream', db.get_engine(), index=False, if_exists='append')
         return 'received'
