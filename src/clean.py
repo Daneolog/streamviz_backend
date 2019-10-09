@@ -21,7 +21,7 @@ def clean(filename):
     return df
 
 if __name__ == "__main__":
-    df = clean('UOWN_data_master_04nov2018.csv')
+    df = clean('data/UOWN_data_master_04nov2018.csv')
 
     df.to_csv('data/UOWN_data_master_04nov2018_clean.csv', index=False)
     conn = create_engine('mysql+pymysql://root:password@localhost/streamviz')
