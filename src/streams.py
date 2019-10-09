@@ -1,6 +1,7 @@
-from flask import send_from_directory
+from flask import send_from_directory, request
 from flask_restplus import Namespace, Resource, fields
 from src import mysql
+from .clean import clean
 
 api = Namespace('streams', description='Stream related operations')
 parser = api.parser()
@@ -41,3 +42,14 @@ class Download(Resource):
     @api.expect(parser)
     def get(self):
         return send_from_directory('../data', 'UOWN_data_master_04nov2018_clean.csv')
+
+
+@api.route('/upload')
+class Upload(Resource):
+
+    @api.expect(parser)
+    def post(self):
+        csv = request.files['file']
+        csv.save(f'data/{csv.filename}')
+
+        return 'received'
