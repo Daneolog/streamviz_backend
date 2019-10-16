@@ -13,8 +13,8 @@ def clean(filename):
     df['date'] = pd.to_datetime(df[['year', 'month', 'day']], errors='coerce')
 
     # rename columns
-    df.rename(columns={'visual_score': 'Visual Score', 'biological_score': 'Biological Score', 'conductivity.uscm': 'Conductivity', 'turbidity.ntu': 'Turbidity', 'po4.mgL': 'Phosphate',
-                    'no3.mgL': 'Nitrate', 'temperature.c': 'Temperature', 'e.coli.cfu': 'E.coli', 'ecoli.method.known': 'E.coli Method'}, inplace=True)
+    df.rename(columns={'visual_score': 'Visual Score', 'biological_score': 'Biological Score', 'conductivity.uscm': 'Conductivity (uS/cm)', 'turbidity.ntu': 'Turbidity (NTU)', 'po4.mgL': 'Phosphate (mg/l)',
+                    'no3.mgL': 'Nitrate (mg/l)', 'temperature.c': 'Temperature (°C)', 'e.coli.cfu': 'E.coli (cfu)', 'ecoli.method.known': 'E.coli Method'}, inplace=True)
 
     df.drop(['WS', 'ID', 'month', 'year', 'day', 'quarter'], axis=1, inplace=True)
 

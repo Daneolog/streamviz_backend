@@ -1,4 +1,4 @@
-WSID,Visual Score,Biological Score,Conductivity,Turbidity,Phosphate,Nitrate,pH,Temperature,E.coli,E.coli Method,date
+WSID,Visual Score,Biological Score,Conductivity (uS/cm),Turbidity (NTU),Phosphate (mg/l),Nitrate (mg/l),pH,Temperature (°C),E.coli (cfu),E.coli Method,date
 BICO102,44.0,22.0,83.0,4.0,,0.8,7.2,,275,,2001-04-28
 BICO103,,27.0,,,,,,,,,2001-04-28
 MIDO101,45.0,,47.0,3.0,,,,,145,,2001-04-28
