@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for
-from flaskext.mysql import MySQL
 from flask_restplus import Api
 from src import app
 
